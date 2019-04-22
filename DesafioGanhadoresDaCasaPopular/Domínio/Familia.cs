@@ -10,12 +10,14 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
     {
         private string Id { get; }
         private readonly List<Pessoa> _pessoas;
+        private StatusFamilia Status { get; set; }
 
 
-        public Familia(List<Pessoa> pessoas)
+        public Familia(List<Pessoa> pessoas, StatusFamilia status)
         {
             Id = "0123" + DateTime.Now.ToString("MM/dd/yyyy HH:mm");
             _pessoas = pessoas;
+            this.Status = status;
         }
 
         public Pessoa ObterPessoaPretendente()
@@ -42,6 +44,17 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
         private bool ExistePessoaPretendenteCadastrada()
         {
             return ObterPessoaPretendente() != null;
+        }
+
+        public double ObterRendaTotal()
+        {
+            double rendaTotal = 0;
+            foreach (var pessoa in _pessoas)
+            {
+                rendaTotal += pessoa.Renda.Valor;
+            }
+
+            return rendaTotal;
         }
     }
 }
