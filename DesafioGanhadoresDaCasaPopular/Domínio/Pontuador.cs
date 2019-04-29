@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DesafioGanhadoresDaCasaPopular.Domínio
 {
     class Pontuador
     {
-        public int ObterPontuacaoDaRendaDaFamilia(double rendaTotal)
+        public IEnumerable<ICriterioDePontuacao> criterios;
+        public int ObterPontuacaoGeral(Familia familia)
         {
-            if (rendaTotal >= 1501.00 && rendaTotal <= 2000.00)
-            {
-                return 1;
-            }
-
-            return 0;
+            return criterios.Sum(criterio => criterio.ObterPontuacao(familia));
         }
+    }
+
+    internal interface ICriterioDePontuacao
+    {
+        int ObterPontuacao(Familia familia);
     }
 }

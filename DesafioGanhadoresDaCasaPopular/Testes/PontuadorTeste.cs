@@ -9,20 +9,6 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
     class PontuadorTeste
     {
 
-        [Test]
-        public void DeveMarcar1PontoParaRendaTotalEntre1501E2000()
-        {
-            double pontuacaoEsperada = 1;
-            var pontuador = new Pontuador();
-            var pessoas = new List<Pessoa>();
-            pessoas.Add(new Pessoa(TipoPessoa.Pretendente, new DateTime(1996, 02, 24), 1800));
-            var familia = new Familia(pessoas, StatusFamilia.ElegivelParaSelecao);
-
-            var pontuacaoDaRenda = pontuador.ObterPontuacaoDaRendaDaFamilia(familia.ObterRendaTotal());
-
-            Assert.AreEqual(pontuacaoEsperada, pontuacaoDaRenda);
-        }
-
 
         [Test]
         public void DeveMarcar3PontosParaRendaTotalEntre901E1500()
@@ -33,7 +19,7 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
             pessoas.Add(new Pessoa(TipoPessoa.Pretendente, new DateTime(1996, 02, 24), 1200));
             var familia = new Familia(pessoas, StatusFamilia.ElegivelParaSelecao);
 
-            var pontuacaoDaRenda = pontuador.ObterPontuacaoDaRendaDaFamilia(familia.ObterRendaTotal());
+            var pontuacaoDaRenda = pontuador.ObterPontuacaoGeral();
 
             Assert.AreEqual(pontuacaoEsperada, pontuacaoDaRenda);
         }
