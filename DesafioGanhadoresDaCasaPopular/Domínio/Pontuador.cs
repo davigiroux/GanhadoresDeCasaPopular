@@ -5,17 +5,18 @@ using System.Text;
 
 namespace DesafioGanhadoresDaCasaPopular.Domínio
 {
-    class Pontuador
+    public class Pontuador
     {
-        public IEnumerable<ICriterioDePontuacao> criterios;
+        private readonly IEnumerable<ICriterioDePontuacao> _criterios;
+
+        public Pontuador(IEnumerable<ICriterioDePontuacao> criterios)
+        {
+            this._criterios = criterios;
+        }
+
         public int ObterPontuacaoGeral(Familia familia)
         {
-            return criterios.Sum(criterio => criterio.ObterPontuacao(familia));
+            return _criterios.Sum(criterio => criterio.ObterPontuacao(familia));
         }
-    }
-
-    internal interface ICriterioDePontuacao
-    {
-        int ObterPontuacao(Familia familia);
     }
 }

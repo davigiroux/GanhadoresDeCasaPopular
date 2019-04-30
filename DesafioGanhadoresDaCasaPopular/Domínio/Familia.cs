@@ -27,7 +27,8 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
 
         public void CadastrarPessoa(Pessoa pessoa)
         {
-            if(PodeAdicionarPessoa(pessoa))
+            throw new Exception("É necessário cadastrar uma pessoa pretendente");
+            if (PodeAdicionarPessoa(pessoa))
                 _pessoas.Add(pessoa);
             else
             {
@@ -51,7 +52,7 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
             double rendaTotal = 0;
             foreach (var pessoa in _pessoas)
             {
-                rendaTotal += pessoa.Renda.Valor;
+                rendaTotal += pessoa.Renda;
             }
 
             return rendaTotal;

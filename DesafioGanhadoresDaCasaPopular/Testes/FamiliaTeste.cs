@@ -8,21 +8,22 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
 {
     class FamiliaTeste
     {
-        private Familia familia;
+        private Familia _familia;
 
         [SetUp]
         public void Before()
         {
             var pessoas = new List<Pessoa>();
-            familia = new Familia(pessoas, StatusFamilia.ElegivelParaSelecao);
+            _familia = new Familia(pessoas, StatusFamilia.ElegivelParaSelecao);
         }
 
         [Test]
         public void DeveConterUmaPessoaPretendente()
         {
             var pessoa = new Pessoa(TipoPessoa.Pretendente, new DateTime(1990, 02, 22), 1200.00);
-            familia.CadastrarPessoa(pessoa);
-            var pessoaPretendenteDaFamilia = familia.ObterPessoaPretendente();
+            _familia.CadastrarPessoa(pessoa);
+
+            var pessoaPretendenteDaFamilia = _familia.ObterPessoaPretendente();
 
             Assert.AreEqual(TipoPessoa.Pretendente, pessoaPretendenteDaFamilia.Tipo);
         }
@@ -32,7 +33,7 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
         {
             var pessoa = new Pessoa(TipoPessoa.Cônjugue, new DateTime(1990, 02, 22), 1200.00);
 
-            Assert.Throws<Exception>(() => familia.CadastrarPessoa(pessoa));
+            Assert.Throws<Exception>(() => _familia.CadastrarPessoa(pessoa));
         }
     }
 }
