@@ -19,5 +19,29 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
 
             Assert.AreEqual(3, pontuacao);
         }
+
+        [Test]
+        public void NaoDevePontuarSeRendaForMenorQue901()
+        {
+            var criterio = new CriterioDeRendaMaiorQue900EMenorQue1501();
+            var familia = FamiliaBuilder.UmaFamilia().ComPessoa(PessoaBuilder.UmaPessoa().ComRenda(900).Build())
+                .Build();
+
+            var pontuacao = criterio.ObterPontuacao(familia);
+
+            Assert.AreEqual(0, pontuacao);
+        }
+
+        [Test]
+        public void NaoDevePontuarSeRendaForMaiorQue1500()
+        {
+            var criterio = new CriterioDeRendaMaiorQue900EMenorQue1501();
+            var familia = FamiliaBuilder.UmaFamilia().ComPessoa(PessoaBuilder.UmaPessoa().ComRenda(1501).Build())
+                .Build();
+
+            var pontuacao = criterio.ObterPontuacao(familia);
+
+            Assert.AreEqual(0, pontuacao);
+        }
     }
 }
