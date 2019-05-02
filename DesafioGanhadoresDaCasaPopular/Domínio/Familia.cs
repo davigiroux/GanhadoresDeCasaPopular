@@ -27,7 +27,6 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
 
         public void CadastrarPessoa(Pessoa pessoa)
         {
-            throw new Exception("É necessário cadastrar uma pessoa pretendente");
             if (PodeAdicionarPessoa(pessoa))
                 _pessoas.Add(pessoa);
             else

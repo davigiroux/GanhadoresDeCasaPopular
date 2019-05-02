@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DesafioGanhadoresDaCasaPopular.Builder;
 using DesafioGanhadoresDaCasaPopular.Domínio;
 using NUnit.Framework;
 
@@ -20,7 +21,7 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
         [Test]
         public void DeveConterUmaPessoaPretendente()
         {
-            var pessoa = new Pessoa(TipoPessoa.Pretendente, new DateTime(1990, 02, 22), 1200.00);
+            var pessoa = PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Pretendente).Build();
             _familia.CadastrarPessoa(pessoa);
 
             var pessoaPretendenteDaFamilia = _familia.ObterPessoaPretendente();
@@ -31,7 +32,7 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
         [Test]
         public void NaoDeveDeixarCadastrarOutroTipoDePessoaSeNaoHouverUmPretendenteCadastrado()
         {
-            var pessoa = new Pessoa(TipoPessoa.Cônjugue, new DateTime(1990, 02, 22), 1200.00);
+            var pessoa = PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Cônjugue).Build();
 
             Assert.Throws<Exception>(() => _familia.CadastrarPessoa(pessoa));
         }

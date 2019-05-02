@@ -4,11 +4,14 @@ using System.Text;
 
 namespace DesafioGanhadoresDaCasaPopular.Domínio
 {
-    class CriterioDeRendaMenorQue900 : ICriterioDePontuacao
+    class CriterioDeRendaMaiorQue900EMenorQue1501 : ICriterioDePontuacao
     {
         public int ObterPontuacao(Familia familia)
         {
-            return familia.ObterRendaTotal() <= 900 ? 5 : 0;
+            if (familia.ObterRendaTotal() > 900 && familia.ObterRendaTotal() < 1501)
+                return 3;
+
+            return 0;
         }
     }
 }
