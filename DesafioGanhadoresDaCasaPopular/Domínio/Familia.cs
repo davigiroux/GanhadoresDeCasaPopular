@@ -56,5 +56,10 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
 
             return rendaTotal;
         }
+
+        public int ObterQuantidadeDeDependentes()
+        {
+            return _pessoas.FindAll(pessoa => pessoa.Tipo == TipoPessoa.Dependente).Count;
+        }
     }
 }

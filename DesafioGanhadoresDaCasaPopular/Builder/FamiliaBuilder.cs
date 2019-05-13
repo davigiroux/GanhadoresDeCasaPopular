@@ -28,6 +28,12 @@ namespace DesafioGanhadoresDaCasaPopular.Builder
             return this;
         }
 
+        public FamiliaBuilder ComPessoas(List<Pessoa> pessoas)
+        {
+            _pessoas = pessoas;
+            return this;
+        }
+
         public FamiliaBuilder ComStatusFamilia(StatusFamilia statusFamilia)
         {
             _statusFamilia = statusFamilia;
