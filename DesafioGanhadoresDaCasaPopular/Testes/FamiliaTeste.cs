@@ -19,6 +19,12 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
         }
 
         [Test]
+        public void DeveCriarFamilia()
+        {
+
+        }
+
+        [Test]
         public void DeveConterUmaPessoaPretendente()
         {
             var pessoa = PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Pretendente).Build();
