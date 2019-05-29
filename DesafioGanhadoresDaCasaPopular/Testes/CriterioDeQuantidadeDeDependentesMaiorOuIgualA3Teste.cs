@@ -43,5 +43,23 @@ namespace DesafioGanhadoresDaCasaPopular.Testes
 
             Assert.AreEqual(0, pontuacao);
         }
+
+        [Test]
+        public void NaoDeveConsiderarDependentesComIdadeMaiorQue18Anos()
+        {
+            var pessoas = new List<Pessoa>()
+            {
+                PessoaBuilder.UmaPessoa().Build(),
+                PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Dependente).ComIdade(25).Build(),
+                PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Dependente).ComIdade(10).Build(),
+                PessoaBuilder.UmaPessoa().ComTipoPessoa(TipoPessoa.Dependente).ComIdade(18).Build()
+            };
+            var familia = FamiliaBuilder.UmaFamilia().ComPessoas(pessoas).Build();
+            var criterio = new CriterioDeQuantidadeDeDependentesMaiorOuIgualA3();
+
+            var pontuacao = criterio.ObterPontuacao(familia);
+
+            Assert.AreEqual(0, pontuacao);
+        }
     }
 }

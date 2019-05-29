@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using DesafioGanhadoresDaCasaPopular.Testes;
 
 namespace DesafioGanhadoresDaCasaPopular.Builder
@@ -37,6 +35,12 @@ namespace DesafioGanhadoresDaCasaPopular.Builder
         public PessoaBuilder ComTipoPessoa(TipoPessoa tipoPessoa)
         {
             _tipoPessoa = tipoPessoa;
+            return this;
+        }
+
+        public PessoaBuilder ComIdade(int idade)
+        {
+            _dataNascimento = DateTime.Now.AddYears(-idade);
             return this;
         }
     }

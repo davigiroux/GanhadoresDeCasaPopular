@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using DesafioGanhadoresDaCasaPopular.Testes;
-using NUnit.Framework;
 
 namespace DesafioGanhadoresDaCasaPopular.Domínio
 {
@@ -10,7 +8,7 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
     {
         private string Id { get; }
         private readonly List<Pessoa> _pessoas;
-        private StatusFamilia Status { get; set; }
+        public StatusFamilia Status { get; private set; }
 
 
         public Familia(List<Pessoa> pessoas, StatusFamilia status)
@@ -60,6 +58,11 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
         public int ObterQuantidadeDeDependentes()
         {
             return _pessoas.FindAll(pessoa => pessoa.Tipo == TipoPessoa.Dependente).Count;
+        }
+
+        public int ObterQuantidadeDeDependentesComMenosDe19Anos()
+        {
+            return _pessoas.FindAll(pessoa => pessoa.Tipo == TipoPessoa.Dependente && pessoa.Idade <= 18).Count;
         }
     }
 }

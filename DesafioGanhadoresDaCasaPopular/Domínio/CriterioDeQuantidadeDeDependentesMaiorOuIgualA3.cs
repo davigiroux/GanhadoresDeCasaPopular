@@ -8,7 +8,7 @@ namespace DesafioGanhadoresDaCasaPopular.Domínio
     {
         public int ObterPontuacao(Familia familia)
         {
-            var quantidadeDeDependentes = familia.ObterQuantidadeDeDependentes();
+            var quantidadeDeDependentes = familia.ObterQuantidadeDeDependentesComMenosDe19Anos();
 
             if (quantidadeDeDependentes >= 3)
                 return 3;
